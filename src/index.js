@@ -10,7 +10,7 @@ const app = express();
 // e permite enviar uma resposta ao usuário.
 app.get('/', (request, response) => {
   // Resposta sendo enviar atráves de um Objeto json
-  return response.json({ message: 'Hello World!' });
+  return response.json({ message: 'Hello World' });
 });
 
 // Porta que a aplicação irá escutar para
