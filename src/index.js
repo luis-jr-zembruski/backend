@@ -1,19 +1,56 @@
-// Importa o express para uma variável chamada express
 const express = require('express');
 
-// Faz com que a variável app utilize o express
-// para iteragir com as requisições do usuário.
 const app = express();
 
-// Método get do express, que permite escutar as requisições
-// vindas de uma determinada rota da nossa aplicação,
-// e permite enviar uma resposta ao usuário.
-app.get('/', (request, response) => {
-  // Resposta sendo enviar atráves de um Objeto json
-  return response.json({ message: 'Hello World' });
+app.use(express.json());
+
+app.get('/projects', (request, response) => {
+
+  const { title, owner} = request.query;
+
+  console.log(title);
+  console.log(owner);
+
+  return response.json([
+    'Projeto 1',
+    'Projeto 2'
+  ]);
 });
 
-// Porta que a aplicação irá escutar para
-// saber o que o usuário necessita e o que
-// responder a ele para cada requisição
-app.listen(3333);
+app.post('/projects', (request, response) =>{
+
+  const { title, owner } = request.body;
+
+  console.log(title);
+	console.log(owner);
+
+  return response.json([
+    'Projeto 1',
+    'Projeto 2',
+    'Projeto 3'
+  ]);
+});
+
+app.put('/projects/:id', (request, response) =>{
+  
+  const { id } = request.params;
+
+  console.log(id);
+
+  return response.json([
+    'Projeto 4',
+    'Projeto 2',
+    'Projeto 3'
+  ]);
+});
+
+app.delete('/projects/:id', (request, response) =>{
+  return response.json([
+    'Projeto 4',
+    'Projeto 2',
+  ]);
+});
+
+app.listen(3333, () => {
+  console.log('🚀 Back-end Started!')
+});
