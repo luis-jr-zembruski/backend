@@ -1,4 +1,3 @@
-const { request } = require('express');
 const express = require('express');
 const { uuid, isUuid } = require('uuidv4');
 
@@ -56,7 +55,6 @@ app.post('/projects', (request, response) =>{
   return response.json(project);
 });
 
-
 app.put('/projects/:id', (request, response) =>{
   
   const { id } = request.params;
@@ -79,7 +77,6 @@ app.put('/projects/:id', (request, response) =>{
   return response.json(project);
 });
 
-
 app.delete('/projects/:id', (request, response) =>{
 
   const { id } = request.params;
@@ -94,7 +91,6 @@ app.delete('/projects/:id', (request, response) =>{
 
   return response.status(204).send();
 });
-
 
 app.listen(3333, () => {
   console.log('🚀 Back-end Started!')
